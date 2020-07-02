@@ -1,0 +1,73 @@
+html {
+    font-size: 10px;
+    font-family: sans-serif;
+}
+
+p{
+    font-size: 1.6rem;
+    line-height:1;
+}
+
+h1{
+    font-family:'billabong';
+    text-align:center;
+    font-size:13rem;
+    font-weight:100;
+    margin:2rem 0;
+    letter-spacing: -1px;
+    color:black;
+}
+
+@font-face {
+    font-family:'billabong';
+    src: url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.eot");
+    src: url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.eot?#iefix") format('embedded-opentype'), url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.woff") format('woff'), url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.ttf") format('truetype'), url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.svg#billabongregular") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.photo-grid{
+    display:flex; /* puts them all in one line */
+    max-width:1000px;
+    margin: 0 auto;
+
+    flex-wrap: wrap; /* ensures that all the flex items can break into multiple lines */
+    /*flex-direction:column;*/
+}
+
+.figure{
+    flex-basis:calc(33.333% - 4rem);
+    border:1px solid #d3d3d3;
+    padding:2rem;
+    flex-grow: 1; /* all elements on the same role will share the space and those outside will ocupy the rest of the space*/
+    margin: 0 2rem 2rem 2rem;
+}
+
+.photo {
+    width: calc(100% + 4rem);
+    margin: -2rem 0rem 0rem -2rem;
+}
+
+.button-container{
+    display:flex;
+    justify-content: center;
+}
+
+.remove-button{
+    flex-basic:48%;
+    width:48%;
+    color:red;
+    font-size:1.5rem;
+    border:2px solid #f2f2f2;
+    line-height:2;
+    padding:5px;
+}
+
+.add-icon{
+    margin:20px auto;
+    display:table;
+    padding:40px;
+    background: url("https://image.flaticon.com/icons/svg/60/60740.svg") center no-repeat;
+    background-size: contain;
+    border:none;
+}
