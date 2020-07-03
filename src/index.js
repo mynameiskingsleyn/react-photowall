@@ -1,7 +1,14 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Main from './Components/Main';
+//import Main from './Components/Main';
 import './styles/stylesheet.css';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {createStore} from 'redux';
+import  rootReducer from './redux/reducer';
+import {Provider} from 'react-redux';
+import App from './Components/App';
+
+//import {createBrowserHistory} from 'history';
 
 //
 // const element = React.createElement('ol',null,
@@ -10,5 +17,6 @@ import './styles/stylesheet.css';
 //
 // ReactDom.render(element, document.getElementById('root'));
 
+const store = createStore(rootReducer);
 
-ReactDom.render(<Main/>, document.getElementById('root'));
+ReactDom.render(<Provider store={store}><Router><App/></Router></Provider>, document.getElementById('root'));
