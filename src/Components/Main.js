@@ -63,13 +63,13 @@ class Main extends Component{
                 } />
 
                 {/*<Route path="/addPhoto" component={AddPhoto} />*/}
-                {/*<Route path="/addPhoto"  render={({history}) =>*/}
-                    {/*<AddPhoto onAddPhoto={(addedPost) => {*/}
-                        {/*this.addPhoto(addedPost)*/}
-                        {/*history.push('/')*/}
-                    {/*}*/}
-                    {/*} />*/}
-                {/*} />*/}
+                <Route path="/addPhoto"  render={({history}) =>
+                    <AddPhoto onAddPhoto={(addedPost) => {
+                        this.addPhoto(addedPost)
+                        history.push('/')
+                    }
+                    } />
+                } />
             </div>
         )
     }
