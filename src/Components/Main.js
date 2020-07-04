@@ -6,11 +6,12 @@ import PhotoWall from './PhotoWall';
 
 import AddPhoto from './AddPhoto';
 
-import {Route} from 'react-router-dom';
+import {Route,Link} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 
 import {removePost} from '../redux/actions';
+import Single from './Single';
 
 class Main extends Component{
     constructor(){
@@ -23,18 +24,6 @@ class Main extends Component{
         //this.addPhoto = this.addPhoto.bind(this);
         //console.log('construtor called')
     }
-
-    // removePhoto(postRemoved){
-    //     this.setState((state)=>({
-    //         posts: state.posts.filter(post=>post !== postRemoved)
-    //     }))
-    // }
-    //
-    // addPhoto(postSubmited){
-    //     this.setState((state)=>({
-    //         posts: state.posts.concat([postSubmited])
-    //     }))
-    // }
 
     componentDidMount(){
         //this.props.removePost(1)
@@ -55,20 +44,23 @@ class Main extends Component{
         //console.log(this.props.posts);
         return(
             <div>
+                <h1>
+                    <Link to='/'> PhotoWall </Link>
+                </h1>
+
                 <Route exact path ="/" render ={()=>
                     <div>
-                        <Title title={'Photowall'}/>
                         <PhotoWall {...this.props} />
                     </div>
                 } />
 
                 {/*<Route path="/addPhoto" component={AddPhoto} />*/}
                 <Route path="/addPhoto"  render={({history}) =>
-                    <AddPhoto onAddPhoto={(addedPost) => {
-                        this.addPhoto(addedPost)
-                        history.push('/')
-                    }
-                    } />
+                    <AddPhoto {...this.props} />
+                } />
+
+                <Route path="/single/:id" render={(params)=>
+                    <Single {...this.props} {...params} />
                 } />
             </div>
         )
