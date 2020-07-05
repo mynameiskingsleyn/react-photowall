@@ -4,6 +4,7 @@ import {combineReducers} from 'redux';
 
 function comments(state={},action){
     //console.log('landed on comments reducer')
+    //console.log(action);
     switch(action.type){
         case 'ADD_COMMENT':
             //console.log(action.postId);
@@ -12,6 +13,9 @@ function comments(state={},action){
             }else{
                 return {...state,[action.postId]:[...state[action.postId],action.comment]}
             }
+
+        case 'LOAD_COMMENTS':
+            return state = action.comments
 
         default:
             return state
@@ -28,6 +32,8 @@ function posts(state=post,action){
             return state.filter(item=>item.id !== action.index);
         case 'ADD_POST':
             return [...state,action.post];
+        case 'LOAD_POSTS':
+            return action.posts;
         default:
             return state
     }

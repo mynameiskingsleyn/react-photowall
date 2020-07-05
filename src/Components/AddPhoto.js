@@ -21,7 +21,7 @@ class AddPhoto extends Component {
             imageLink: imageLink
         }
         if(imageLink && description){
-            this.props.addPost(post);
+            this.props.startAddingPost(post);
             this.props.history.push('/')
         }else{
             if(!imageLink){
@@ -37,7 +37,7 @@ class AddPhoto extends Component {
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" placeholder="Link" name="link" required='required' />
-                        <span class="error">{this.state.urlError} </span>
+                        <span className="error">{this.state.urlError} </span>
                         <input type="text" placeholder="Description" name="description"/>
                         <button> Post </button>
 

@@ -3,10 +3,12 @@ import ReactDom from 'react-dom';
 //import Main from './Components/Main';
 import './styles/stylesheet.css';
 import {BrowserRouter as Router} from 'react-router-dom';
-import {createStore} from 'redux';
+import {createStore,applyMiddleware} from 'redux';
 import  rootReducer from './redux/reducer';
 import {Provider} from 'react-redux';
 import App from './Components/App';
+import thunk from 'redux-thunk';
+import {database} from './database/config';
 
 //import {createBrowserHistory} from 'history';
 
@@ -17,6 +19,6 @@ import App from './Components/App';
 //
 // ReactDom.render(element, document.getElementById('root'));
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),applyMiddleware(thunk));
 
 ReactDom.render(<Provider store={store}><Router><App/></Router></Provider>, document.getElementById('root'));

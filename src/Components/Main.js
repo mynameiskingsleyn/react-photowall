@@ -14,19 +14,21 @@ import {removePost} from '../redux/actions';
 import Single from './Single';
 
 class Main extends Component{
+    state ={ loading: true}
     constructor(){
         super();
         // this.state = {
         //     posts:[],
         //     screen:'photos' //photos. addPhotos
         // }
-        //this.removePhoto = this.removePhoto.bind(this);
-        //this.addPhoto = this.addPhoto.bind(this);
-        //console.log('construtor called')
+
     }
 
     componentDidMount(){
-        //this.props.removePost(1)
+        this.props.startLoadingPosts().then(()=>{
+            this.setState({loading:false})
+        });
+        this.props.startLoadingComments();
     }
 
     componentWillMount(){
@@ -41,7 +43,7 @@ class Main extends Component{
     render(){
         //console.log('render called')
         //console.log(this.state.posts)
-        //console.log(this.props.posts);
+        //console.log(this.props);
         return(
             <div>
                 <h1>
@@ -60,7 +62,7 @@ class Main extends Component{
                 } />
 
                 <Route path="/single/:id" render={(params)=>
-                    <Single {...this.props} {...params} />
+                    <Single loading={this.state.loading} {...this.props} {...params} />
                 } />
             </div>
         )

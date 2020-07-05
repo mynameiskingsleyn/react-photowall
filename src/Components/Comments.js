@@ -13,13 +13,13 @@ class Comments extends Component
          const comment = event.target.elements.comment.value;
          const postId = this.props.post.id;
         event.target.elements.comment.value = "";
-         this.props.addComment(comment,postId);
+         this.props.startAddingComment(comment,postId);
          //console.log(event.target.elements.comment.value);
     }
     render(){
         //emit action this.props.addComment
         //const commen
-        console.log(this.props.comments)
+        //console.log(this.props.comments)
         //console.log(this.props);
         return <div className="comments">
             {

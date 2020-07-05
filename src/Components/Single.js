@@ -10,12 +10,21 @@ class Single extends Component
         const{match,posts} = this.props;
         const id = Number(match.params.id);
         const post = posts.find((post)=> post.id === id);
+        const index = posts.findIndex((post)=>post.id === id);
+        const loading = this.props.loading;
+        //console.log(index);
         const comments = this.props.comments[id] || [];
+        if(this.props.loading ===true){
+            return <div className="loader">.....loading </div>
+        }else if(post){
+            return <div className="single-photo">
+                <Photo post={post} {...this.props} />
+                <Comments startAddingComment={this.props.startAddingComment} comments={comments} post={post}/>
+            </div>
+        }else{
+           return <h2 class="loader">....post not found</h2>
+        }
 
-        return <div className="single-photo">
-                    <Photo post={post} {...this.props} />
-                    <Comments addComment={this.props.addComment} comments={comments} post={post}/>
-                </div>
     }
 }
 

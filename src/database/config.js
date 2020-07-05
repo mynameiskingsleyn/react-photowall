@@ -12,4 +12,6 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export default firebase;
+const database = firebase.database(); // we will be using this to update our database.
+
+export  {database};
